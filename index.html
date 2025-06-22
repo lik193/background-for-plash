@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Media Loop Slideshow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <main>
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">📁</div>
+                        <h3>Drag & Drop Media Here</h3>
+                    </div>
+                    <input type="file" id="fileInput" multiple accept="image/*,video/*" style="display: none;">
+                </div>
+            </section>
+
+            <!-- Configuration Section -->
+            <section class="config-section" id="configSection" style="display: none;">
+                <h3>Slideshow Configuration</h3>
+                <div class="config-item">
+                    <label for="imageDuration">Image Display Duration (seconds):</label>
+                    <input type="range" id="imageDuration" min="1" max="20" value="10" class="slider">
+                    <span id="durationValue">10</span>
+                </div>
+                <div class="config-item">
+                    <label>Transition Duration: 1 second (fixed)</label>
+                </div>
+            </section>
+
+            <!-- Media Library Section -->
+            <section class="library-section">
+                <div class="library-header">
+                    <h3>Media Library</h3>
+                    <div class="library-stats">
+                        <span id="mediaCount">0 items</span>
+                        <span id="totalSize">0 MB</span>
+                    </div>
+                </div>
+                <div class="library-content">
+                    <div class="media-grid" id="mediaGrid">
+                        <!-- Media items will be dynamically added here -->
+                    </div>
+                    <div class="controls-section">
+                        <button id="startSlideshow" class="btn btn-primary" disabled>
+                            Start
+                        </button>
+                        <button id="clearAll" class="btn btn-secondary">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Slideshow Overlay -->
+    <div id="slideshowOverlay" class="slideshow-overlay">
+        <div class="slideshow-container">
+            <div class="slideshow-content">
+                <img id="slideshowImage" class="slideshow-media" style="display: none;">
+                <video id="slideshowVideo" class="slideshow-media" style="display: none;" muted autoplay>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="slideshow-info">
+                <span id="currentItemInfo">No media loaded</span>
+                <span id="progressInfo">0 / 0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator">
+        <div class="loading-spinner"></div>
+        <p>Processing media...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
